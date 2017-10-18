@@ -15,6 +15,11 @@ utVariable: mainVariable.o
 mainVariable.o: mainVariable.cpp utVariable.h variable.h
 		g++ -std=c++11 -c mainVariable.cpp
 
+utNumber: mainNumber.o
+	g++ -o utNumber mainNumber.o  -lgtest -lpthread
+mainNumber.o: mainNumber.cpp utNumber.h number.h
+		g++ -std=c++11 -c mainNumber.cpp
+
 #exp: mainExp.o
 #	g++ -o exp mainExp.o -lgtest -lpthread
 #mainExp.o: mainExp.cpp exp.h global.h
