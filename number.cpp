@@ -20,9 +20,12 @@ bool Number::match(Term & term) {
         dynamic_cast<Struct*>(&term) != nullptr) {
         return term.match(*this);
     }*/
-    if (dynamic_cast<Variable*>(&term) ||
+    Struct * st = dynamic_cast<Struct *>(&term);
+    Variable * vr = dynamic_cast<Variable *>(&term);
+    /*if (dynamic_cast<Variable*>(&term) ||
         dynamic_cast<Struct*>(&term)) {
         return term.match(*this);
-    }
+    }*/
+    if (st || vr) return term.match(*this);
     return value() == term.value();
 }
