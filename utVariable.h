@@ -4,8 +4,6 @@
 #include "struct.h"
 #include "atom.h"
 #include "number.h"
-#include <iostream>
-using std::cout;
 
 TEST(Variable, constructor){
   Variable X("X");

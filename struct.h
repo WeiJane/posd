@@ -1,13 +1,11 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-//#include <sstream>
 #include <string>
 #include <vector>
 #include "atom.h"
 #include "term.h"
 
-//using std::ostringstream;
 using std::string;
 using std::vector;
 
