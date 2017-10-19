@@ -16,8 +16,12 @@ string Number::value() const {
 }
 
 bool Number::match(Term & term) {
-    if (dynamic_cast<Variable*>(&term) != nullptr ||
+    /*if (dynamic_cast<Variable*>(&term) != nullptr ||
         dynamic_cast<Struct*>(&term) != nullptr) {
+        return term.match(*this);
+    }*/
+    if (dynamic_cast<Variable*>(&term) ||
+        dynamic_cast<Struct*>(&term)) {
         return term.match(*this);
     }
     return value() == term.value();
