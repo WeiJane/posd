@@ -8,13 +8,12 @@ using std::string;
 
 class Atom : public Term{
 public:
-  Atom (string s):_symbol(s) {}
+    Atom(string);
+    string symbol() const;
+    bool match(Term&);
 
-  string symbol() const{
-    return _symbol;
-  }
-
-  string _symbol;
+private:
+    string _symbol;
 };
 
 

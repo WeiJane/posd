@@ -1,7 +1,6 @@
 #ifndef UTNUMBER_H
-#define UTTERM_H
+#define UTNUMBER_H
 
-//#include "term.h"
 #include "number.h"
 #include <string>
 #include <iostream>
