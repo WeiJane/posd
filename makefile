@@ -1,7 +1,11 @@
 all: hw3
 
 hw3: mainTerm.o number.o variable.o atom.o struct.o 
+ifeq (${OS}, Windows_NT)
+	g++ -o hw3 mainTerm.o number.o variable.o atom.o struct.o -lgtest
+else
 	g++ -o hw3 mainTerm.o number.o variable.o atom.o struct.o -lgtest -lpthread
+endif
 
 mainTerm.o: mainTerm.cpp utVariable.h utStruct.h 
 	g++ -std=gnu++0x -c mainTerm.cpp
