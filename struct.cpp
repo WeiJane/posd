@@ -31,10 +31,6 @@ string Struct::value() const {
     return vl;
 }
 
-int Struct::size() const {
-    return _args.size();
-}
-
 bool Struct::match(Term& term) {
     Struct * ps = dynamic_cast<Struct *>(&term);
     if (ps){

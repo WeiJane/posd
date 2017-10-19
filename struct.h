@@ -16,7 +16,6 @@ public:
     Term* args(int) const;
     string symbol() const;
     string value() const;
-    int size() const;
     bool match(Term&);
 
 private:
