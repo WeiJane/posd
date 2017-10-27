@@ -1,4 +1,5 @@
 #include "variable.h"
+#include "list.h"
 
 Variable::Variable(string s) {
     _symbol = s;
@@ -15,7 +16,20 @@ string Variable::value() const {
 }
 
 bool Variable::match(Term& term) {
-    if (_term == nullptr) {
+    List * l = dynamic_cast<List *>(&term);
+    if (_term == nullptr && l) {
+        bool matchable = true;
+        for (int i = 0; i< l->elements().size(); i++) {
+            if (l->element(i)->symbol() == symbol()) {
+                matchable = false;
+                break;
+            } else {
+                _term = &term;
+            }
+        }
+        return matchable;
+    }
+    if (_term == nullptr && !l) {
         if (this != &term) {
             _term = &term;
         }
