@@ -54,6 +54,10 @@ bool List::match(Term & term) {
         }
         return true;
     }
+    Variable * v = dynamic_cast<Variable *>(&term);
+    if (v) {
+        return term.match(*this);
+    }
     return false;
 }
 
