@@ -24,7 +24,10 @@ public:
         Atom* atom = new Atom(symtable[_scanner.tokenValue()].first);
         if(_scanner.currentChar() == '(' ) {
           _scanner.nextToken() ;
-          vector<Term*> terms = getArgs();
+          vector<Term*> terms;
+          if (_scanner.currentChar() == ')')
+            return new Struct(*atom, terms);
+          terms = getArgs();
           if(_currentToken == ')')
             return new Struct(*atom, terms);
         }
