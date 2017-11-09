@@ -7,6 +7,8 @@ Atom const & Struct::name() { return _name; }
 
 Term* Struct::args(int index) const { return _args[index]; }
 
+int Struct::arity() const { return _args.size(); }
+
 string Struct::symbol() const {
     string sb = _name.symbol() + "(";
     for (int i = 0; i < _args.size(); i++) {

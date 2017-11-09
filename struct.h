@@ -16,6 +16,7 @@ public:
     Term* args(int) const;
     string symbol() const;
     string value() const;
+    int arity() const;
     bool match(Term&);
 
 private:
