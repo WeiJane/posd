@@ -1,10 +1,10 @@
-all: hw4
+all: hw5
 
-hw4: mainTerm.o number.o variable.o atom.o struct.o list.o 
+hw5: mainTerm.o number.o variable.o atom.o struct.o list.o
 ifeq (${OS}, Windows_NT)
-	g++ -o hw4 mainTerm.o number.o variable.o atom.o struct.o list.o -lgtest
+	g++ -o hw5 mainTerm.o number.o variable.o atom.o struct.o list.o -lgtest
 else
-	g++ -o hw4 mainTerm.o number.o variable.o atom.o struct.o list.o -lgtest -lpthread
+	g++ -o hw5 mainTerm.o number.o variable.o atom.o struct.o list.o -lgtest -lpthread
 endif
 
 #test: global.o test.o
@@ -42,7 +42,7 @@ list.o: list.h list.cpp
 #	g++ -std=gnu++0x -c global.cpp
 
 clean:
-	rm -f *.o *.exe hw4
+	rm -f *.o *.exe hw5
 
 stat:
 	wc *.h *.cpp
