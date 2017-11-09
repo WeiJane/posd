@@ -11,10 +11,12 @@ int Struct::arity() const { return _args.size(); }
 
 string Struct::symbol() const {
     string sb = _name.symbol() + "(";
-    for (int i = 0; i < _args.size(); i++) {
-        sb += _args[i]->symbol();
-        if (i != _args.size() - 1) {
-            sb += ", ";
+    if (_args.size() > 0) {
+        for (int i = 0; i < _args.size(); i++) {
+            sb += _args[i]->symbol();
+            if (i != _args.size() - 1) {
+                sb += ", ";
+            }
         }
     }
     sb += ")";
@@ -23,10 +25,12 @@ string Struct::symbol() const {
 
 string Struct::value() const {
     string vl = _name.value() + "(";
-    for (int i = 0; i < _args.size(); i++) {
-        vl += _args[i]->value();
-        if (i != _args.size() - 1) {
-            vl += ", ";
+    if (_args.size() > 0) {
+        for (int i = 0; i < _args.size(); i++) {
+            vl += _args[i]->value();
+            if (i != _args.size() - 1) {
+                vl += ", ";
+            }
         }
     }
     vl += ")";
