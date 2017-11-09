@@ -246,7 +246,7 @@ TEST_F(ParserTest, parseStructOfStructAllTheWay2) {
 TEST_F(ParserTest, parseStructNoArg) {
     Scanner scanner("point()");
     Parser parser(scanner);
-    //ASSERT_EQ("point()", parser.createTerm()->symbol());
+    ASSERT_EQ("point()", parser.createTerm()->symbol());
 }
 
 
