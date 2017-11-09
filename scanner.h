@@ -32,6 +32,16 @@ public:
         string s = extractVar();
         processToken<VAR>(s);
         return VAR;
+      } else if (currentChar() == '[') {
+        pos++;
+        string s = "[";
+        processToken<LIST>(s);
+        return LIST;
+      } else if (currentChar() == ']') {
+        pos++;
+        string s = "]";
+        processToken<LISTEND>(s);
+        return LISTEND;
       } else {
         _tokenValue = NONE;
         return extractChar();
