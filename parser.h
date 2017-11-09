@@ -9,6 +9,7 @@ using std::string;
 #include "global.h"
 #include "scanner.h"
 #include "struct.h"
+#include "list.h"
 
 class Parser{
 public:
@@ -19,7 +20,7 @@ public:
       return new Variable(symtable[_scanner.tokenValue()].first);
     }else if(token == NUMBER){
       return new Number(_scanner.tokenValue());
-    }else if(token == ATOM){
+    }else if(token == ATOM || token == ATOMSC){
         Atom* atom = new Atom(symtable[_scanner.tokenValue()].first);
         if(_scanner.currentChar() == '(' ) {
           _scanner.nextToken() ;
@@ -29,6 +30,25 @@ public:
         }
         else
           return atom;
+    } else if (token == LIST) {
+        _scanner.skipLeadingWhiteSpace();
+        if (_scanner.currentChar() == ']') {
+            token = _scanner.nextToken();
+            return new List();
+        }
+
+        Term *term = createTerm();
+        vector<Term *> args;
+        if (term) {
+            args.push_back(term);
+        }
+        while ((token = _scanner.nextToken()) == ',') {
+            args.push_back(createTerm());
+        }
+        if (token != LISTEND) {
+            throw std::string ("unexpected token");
+        }
+        return new List(args);
     }
     return nullptr;
   }
