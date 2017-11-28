@@ -24,9 +24,9 @@ list.o:list.cpp list.h
 #mainExp.o: mainExp.cpp exp.h global.h
 #	g++ -std=c++11 -c mainExp.cpp
 
-utScanner: mainScanner.o atom.o list.o scanner.h utScanner.h utParser.h parser.h
-	g++ -o utScanner mainScanner.o atom.o list.o -lgtest -lpthread
-mainScanner.o: mainScanner.cpp utScanner.h scanner.h  atom.h struct.h variable.h  utParser.h parser.h
+utScanner: mainScanner.o atom.o list.o scanner.h utScanner.h utParser.h parser.h node.h
+	g++ -o hw6 mainScanner.o atom.o list.o -lgtest -lpthread
+mainScanner.o: mainScanner.cpp utScanner.h scanner.h  atom.h struct.h variable.h  utParser.h parser.h node.h
 		g++ -std=c++11 -c mainScanner.cpp
 utIterator: mainIterator.o atom.o list.o iterator.h
 	g++ -o utIterator mainIterator.o atom.o list.o struct.h -lgtest -lpthread
@@ -48,6 +48,6 @@ mainIterator.o: mainIterator.cpp utIterator.h
 #list.o: list.h list.cpp term.h var.h
 #	g++ -std=c++11 -c list.cpp
 clean:
-	rm -f *.o madRace utAtom utVariable utScanner
+	rm -f *.o madRace utAtom utVariable utScanner hw6
 stat:
 	wc *.h *.cpp
