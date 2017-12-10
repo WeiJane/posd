@@ -7,9 +7,16 @@
 #include "iterator.h"
 using std::vector;
 
-Iterator * List::createIterator()
-{
-  return new ListIterator(this);
+Iterator <Term*>* List::createIterator(){
+    return new ListIterator <Term*>(this);
+}
+
+Iterator <Term*>* List::createDFSIterator(){
+    return new DFSIterator <Term*>(this);
+}
+
+Iterator <Term*>* List::createBFSIterator(){
+    return new BFSIterator <Term*>(this);
 }
 
 string List::symbol() const{
@@ -47,25 +54,35 @@ bool List::match(Term & term) {
         bool ret =true;
         List * ptrls = dynamic_cast<List*>(&term);
         if( _elements.size() != ptrls->_elements.size() ){
-        ret = false;
+            ret = false;
         }
         else{
-            Iterator * itSelf = createIterator();
-            Iterator * itOther = term.createIterator();
-            for(itSelf->first(), itOther->first(); !itSelf->isDone(); itSelf->next(), itOther->next()){
-              ret = itSelf->currentItem()->match(*itOther->currentItem());
-              if(ret == false)
-                  return ret;
+            for(int i = 0 ; i < _elements.size() ;i++ ){
+                ret = _elements[i]->match(*(ptrls->_elements[i])) ;
+                if(ret == false)
+                    return ret;
             }
-            // for(int i = 0 ; i < _elements.size() ;i++ ){
-            //     ret = _elements[i]->match(*(ptrls->_elements[i])) ;
-            //     if(ret == false)
-            //         return ret;
-            // }
         }
         return ret;
     }
-    return term.match(*this);
+    else if(typeid(term) == typeid(Variable)){
+        bool ret =true;
+        for(int i = 0 ; i < _elements.size() ;i++ ){
+            if(_elements[i]->symbol() ==  term.symbol()){
+                if( _elements[i]->symbol() == term.symbol() ){
+                    ret= false;
+                    return ret;
+                }
+                ret = _elements[i]->match(term) ;
+            }
+            if(ret == false)
+                return ret;
+        }
+        return ret;
+    }
+    else{
+        return value () == term.value();
+    }
 }
 Term * List::head() const{
     if(_elements.empty())
