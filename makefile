@@ -37,7 +37,7 @@ utIterator: mainIterator.o atom.o list.o struct.o iterator.h utIterator.h
 mainIterator.o: mainIterator.cpp utIterator.h
 	g++ -std=gnu++0x -c mainIterator.cpp
 
-hw7: mainIterator.o atom.o list.o struct.o iterator.h utIterator.h
+hw7: mainIterator.o atom.o list.o struct.o iterator.h utIterator.h number.h
 ifeq (${OS}, Windows_NT)
 	g++ -o hw7 mainIterator.o atom.o list.o struct.o -lgtest
 else

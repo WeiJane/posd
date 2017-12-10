@@ -25,13 +25,4 @@ public:
   Atom(string s):Term(s) {}
 };
 
-class Number : public Term{
-public:
-  Number(double db){
-      std::ostringstream strs;
-      strs << db;
-      _symbol = strs.str();
-  }
-};
-
 #endif
