@@ -1,7 +1,7 @@
 #ifndef NUMBER_H
 #define NUMBER_H
 
-#include "term.h"
+#include "atom.h"
 #include <string>
 #include <sstream>
 using std::string;
