@@ -60,7 +60,7 @@ public:
 
   string extractAtom() {
     int posBegin = position();
-    for (;isalnum(buffer[pos]); ++pos);
+    for (;isalnum(buffer[pos]) || buffer[pos] == '_'; ++pos);
     return buffer.substr(posBegin, pos-posBegin);
   }
 
